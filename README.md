@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Organizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+As new year and new part of life (start of Master's Degree) comes in, I decided to better organize my time, now what to do when
+and when to stop. That's where organizer can come in handy.
 
-## Available Scripts
+## Motivation
 
-In the project directory, you can run:
+Opposing to for example Google Calendar, Organizer will be used to every-day activities, as working time, time for relax, reading
+books, etc. Also, this application will be great for finally learn some good practices with React (code structure, responsive design).
 
-### `npm start`
+## MoSCoW tasks
+User MUST be able to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- See a calendar with events.
+- Add / edit / remove events within calendar.
+- Add cyclical event to calendar.
+- View details of event.
+- Add various, non structurized attributes to the event.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User SHOULD be able to:
 
-### `npm test`
+- Filter events.
+- Add importance of events.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User COULD be able to:
 
-### `npm run build`
+- Add notes about events.
+- Have a place to draw handwritten notes / drawings.
+- Have an option to do some diagrams, flows, etc.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User WOULD be able to:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Use voice commands to operate on events.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Stack
+Web app in React, desktop app in Electron and mobile app (for beginning) will do as RWD.
+Later it would be awesome to use PWD or React Native / Flutter / Kotlin. As for backend and database,
+for now it will be more than enough to use Firebase, then Spring / Ktor + MongoDB.
