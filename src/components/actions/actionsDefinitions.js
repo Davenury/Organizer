@@ -1,44 +1,29 @@
 import Swal from 'sweetalert2'
-import {eventsRepository} from "../../repository/eventRepository";
+import withReactContent from "sweetalert2-react-content";
+import {UpdateEvent} from "./UpdateEvent";
 
-const deleteEvent = (event) => {
+const EnhancedSwal = withReactContent(Swal)
 
-    const swalOptions = {
-        icon: "warning",
-        title: "Are you sure?",
-        text: "Deleted event cannot be restored!",
-        showCancelButton: true,
-        showDenyButton: event?.repeatable,
-        confirmButtonText: "Delete event",
-        denyButtonText: event?.repeatable && "Delete event and all repeats"
-    }
+const addEvent = (info) => {
 
-    Swal.fire(swalOptions).then((result) => {
-        if (result.isConfirmed) {
-            eventsRepository.deleteEvent(event)
-                .then(() => {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Event successfully deleted"
-                    })
-                })
-        } else if (result.isDenied) {
-            eventsRepository.deleteEventAndAllOccurrences(event)
-                .then(() => {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Event successfully deleted"
-                    })
-                })
-        }
+    const cron = `${info.start.getMinutes()} ${info.start.getHours()} * * ${info.start.getDay()}`
+
+    const event = { start: info.start, end: info.end, cron: cron }
+
+    EnhancedSwal.fire({
+        html: <UpdateEvent event={event} />,
+        showConfirmButton: false
     })
 }
 
-const addEvent = (slotInfo) => {
-    //swal with adding form
+const updateEvent = (event) => {
+    EnhancedSwal.fire({
+        html: <UpdateEvent event={event} />,
+        showConfirmButton: false
+    })
 }
 
 export const actionsDefinitions = {
     addEvent,
-    deleteEvent
+    updateEvent
 }

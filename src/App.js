@@ -1,24 +1,24 @@
 import './App.css';
-import {Actions} from "./components/actions/Actions";
+import React, {useState} from 'react'
 import {Calendar} from "./components/calendar/Calendar"
-import {useEffect, useState} from 'react'
-import {eventsRepository} from './repository/eventRepository'
+
+export const ReloadContext = React.createContext({
+    reload: false,
+    reloadFunction: () => {}
+})
 
 function App() {
 
-    const [events, setEvents] = useState([])
+    // As Swal can be not directly under this component, it may not have context - maybe it's time to use Redux?
+    const [reload, setReload] = useState(false)
 
-    useEffect(() => {
-        eventsRepository.getAllEvents()
-            .then(events => setEvents(events))
-    }, [])
-
-  return (
-    <div className="App">
-        <Actions />
-      <Calendar events={events} />
-    </div>
-  );
+    return (
+        <ReloadContext.Provider value={{reload: reload, reloadFunction: () => setReload(reload => !reload)}}>
+            <div className="App">
+                <Calendar/>
+            </div>
+        </ReloadContext.Provider>
+    );
 }
 
 export default App;

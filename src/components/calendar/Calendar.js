@@ -5,6 +5,8 @@ import {momentLocalizer} from "react-big-calendar";
 import moment from "moment";
 import {CustomEvent} from "./CustomEvent";
 import {actionsDefinitions} from "../actions/actionsDefinitions";
+import {useEffect, useState} from "react";
+import {eventsRepository} from "../../repository/eventRepository";
 
 const localizer = momentLocalizer(moment)
 
@@ -20,7 +22,20 @@ const eventStyleGetter = (event) => {
     }
 }
 
-export const Calendar = ({events}) => {
+export const Calendar = () => {
+
+    const [events, setEvents] = useState([])
+
+    // Probably good use case for Redux?
+    useEffect(() => {
+        eventsRepository.getAllEvents()
+            .then(events => setEvents(events))
+    }, [])
+
+    const minTime = new Date()
+    minTime.setHours(4, 0, 0)
+    const maxTime = new Date()
+    maxTime.setHours(23, 0, 0)
 
     const matches = useMediaQuery('(min-width:700px)');
 
@@ -37,7 +52,7 @@ export const Calendar = ({events}) => {
     }
 
     const onDoubleClick = (info) => {
-        actionsDefinitions.deleteEvent(info.event)
+        actionsDefinitions.updateEvent(info.event)
     }
 
     const components = {
@@ -53,7 +68,9 @@ export const Calendar = ({events}) => {
         selectable: true,
         events: mapEvents(),
         localizer,
-        eventPropGetter: eventStyleGetter
+        eventPropGetter: eventStyleGetter,
+        min: minTime,
+        max: maxTime
     }
 
     return matches ? <FullWidthCalendar commonCalendarProps={commonCalendarProps} /> :

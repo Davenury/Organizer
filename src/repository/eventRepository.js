@@ -46,11 +46,8 @@ class EventRepository {
             ...event,
             operationTimestamp: new Date()
         }
-        try {
-            await addDoc(this.collection, event)
-        } catch (e) {
-            console.log("Error while adding document ", e)
-        }
+        console.log("xd", this)
+        await addDoc(this.collection, event)
     }
 
     async updateEvent(updatedEvent) {
@@ -63,11 +60,6 @@ class EventRepository {
     }
 
     async deleteEvent(event) {
-        const ref = doc(db, EVENT_COLLECTION_NAME, event.id)
-        await deleteDoc(ref)
-    }
-
-    async deleteEventAndAllOccurrences(event) {
         const ref = doc(db, EVENT_COLLECTION_NAME, event.id)
         await deleteDoc(ref)
     }
